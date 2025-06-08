@@ -1,0 +1,429 @@
+---
+// src/components/Header.astro
+// Estilo v0 adaptado a Astro con SEO optimizado
+---
+
+<header 
+  class="header-main"
+  role="banner"
+  aria-label="Navegación principal MadridTaxis servicio oficial"
+>
+  <div class="header-container">
+    <!-- Menú izquierda - Estilo v0 -->
+    <div
+      class="header-left"
+      role="button"
+      aria-label="Abrir menú navegación taxi Madrid servicios"
+      aria-expanded="false"
+      tabindex="0"
+      id="menuButton"
+    >
+      <div class="hamburger-icon" aria-hidden="true">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+      <span>Menú</span>
+    </div>
+
+    <!-- Logo centro - Estilo v0 con SEO -->
+    <a
+      href="/"
+      class="header-center"
+      aria-label="MadridTaxis inicio - Servicio oficial taxi Madrid aeropuerto"
+    >
+      <img
+        src="/images/logo-madridtaxis.svg"
+        alt="Logo MadridTaxis servicio oficial taxi Madrid aeropuerto Barajas 24h"
+        width="42"
+        height="42"
+        class="logo-icon-porsche"
+        loading="eager"
+      />
+      <span class="logo-text-porsche">MadridTaxis</span>
+    </a>
+
+    <!-- Usuario derecha - Estilo v0 -->
+    <div 
+      class="header-right" 
+      role="button" 
+      aria-label="Área usuario cuenta taxi Madrid" 
+      tabindex="0"
+    >
+      <svg class="user-icon-porsche" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Sidebar/Menu desplegable -->
+  <nav 
+    class="sidebar" 
+    id="sidebar"
+    role="navigation"
+    aria-label="Menú principal navegación taxi Madrid"
+    aria-hidden="true"
+  >
+    <div class="sidebar-content">
+      <a href="/" class="nav-link">🏠 Inicio</a>
+      <a href="/calcular-precio" class="nav-link nav-link-featured">💰 Calculadora de Precios</a>
+      <a href="/servicios" class="nav-link">🚖 Servicios</a>
+      <a href="/tarifas" class="nav-link">💵 Tarifas</a>
+      <a href="/blog" class="nav-link">📝 Blog</a>
+      <a href="/contacto" class="nav-link">📞 Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* HEADER PRINCIPAL - Estilo v0 */
+  .header-main {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 50;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* MENÚ IZQUIERDA - Estilo v0 mejorado */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    color: white;
+    user-select: none;
+  }
+
+  .header-left:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #dc2626;
+  }
+
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 18px;
+  }
+
+  .hamburger-line {
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+  }
+
+  /* Animación hamburguesa activa */
+  .header-left.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .header-left.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header-left.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .header-left span {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* LOGO CENTRO - Estilo v0 con mejoras SEO */
+  .header-center {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.025em;
+    transition: all 0.2s ease;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .header-center:hover {
+    color: #dc2626;
+  }
+
+  .logo-icon-porsche {
+    width: 42px;
+    height: 42px;
+    filter: brightness(1.1);
+    transition: all 0.2s ease;
+  }
+
+  .header-center:hover .logo-icon-porsche {
+    filter: brightness(1.3) drop-shadow(0 0 8px rgba(220, 38, 38, 0.5));
+  }
+
+  .logo-text-porsche {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  /* USUARIO DERECHA - Estilo v0 */
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  .header-right:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .user-icon-porsche {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    fill: none;
+    stroke-width: 2;
+    transition: all 0.2s ease;
+  }
+
+  .header-right:hover .user-icon-porsche {
+    stroke: #dc2626;
+  }
+
+  /* SIDEBAR/MENU - Estilo v0 mejorado */
+  .sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 280px;
+    height: calc(100vh - 60px);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 40;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-content {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .nav-link:hover {
+    background: rgba(220, 38, 38, 0.1);
+    border-color: rgba(220, 38, 38, 0.3);
+    color: #dc2626;
+    transform: translateX(4px);
+  }
+
+  /* Estilo especial para la calculadora - destacada */
+  .nav-link-featured {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(185, 28, 28, 0.1) 100%);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    color: #fca5a5 !important;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-link-featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .nav-link-featured:hover::before {
+    left: 100%;
+  }
+
+  .nav-link-featured:hover {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.25) 0%, rgba(185, 28, 28, 0.2) 100%);
+    border-color: rgba(220, 38, 38, 0.4);
+    color: #ffffff !important;
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  }
+
+  /* OVERLAY */
+  .sidebar-overlay {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 35;
+  }
+
+  .sidebar-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* RESPONSIVE */
+  @media (min-width: 1024px) {
+    .header-container {
+      padding: 0 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-container {
+      padding: 0 0.75rem;
+    }
+    
+    .logo-text-porsche {
+      font-size: 1rem;
+    }
+    
+    .logo-icon-porsche {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  /* ACCESIBILIDAD */
+  @media (prefers-reduced-motion: reduce) {
+    .hamburger-line,
+    .header-left,
+    .header-center,
+    .nav-link,
+    .sidebar,
+    .nav-link-featured::before {
+      transition: none;
+    }
+  }
+
+  /* FOCUS STATES para accesibilidad */
+  .header-left:focus,
+  .header-center:focus,
+  .header-right:focus {
+    outline: 2px solid #dc2626;
+    outline-offset: 2px;
+  }
+
+  .nav-link:focus {
+    outline: 2px solid #dc2626;
+    outline-offset: 2px;
+    background: rgba(220, 38, 38, 0.1);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menuButton');
+    const sidebar = document.getElementById('sidebar');
+    let isMenuOpen = false;
+
+    // Crear overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      
+      if (isMenuOpen) {
+        sidebar?.classList.add('open');
+        overlay.classList.add('show');
+        menuButton?.classList.add('active');
+        menuButton?.setAttribute('aria-expanded', 'true');
+        sidebar?.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Prevenir scroll
+      } else {
+        sidebar?.classList.remove('open');
+        overlay.classList.remove('show');
+        menuButton?.classList.remove('active');
+        menuButton?.setAttribute('aria-expanded', 'false');
+        sidebar?.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeMenu() {
+      if (isMenuOpen) {
+        toggleMenu();
+      }
+    }
+
+    // Event listeners
+    menuButton?.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    // Cerrar menú al hacer clic en enlaces
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMenu();
+      }
+    });
+
+    // Soporte para teclado
+    menuButton?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+  });
+</script>

@@ -1,0 +1,265 @@
+---
+// src/components/TestimoniosSection.astro
+---
+
+<section class="testimonios section">
+  <div class="container">
+    <div class="section-header text-center mb-12">
+      <h2>Clientes Satisfechos Taxi Madrid Aeropuerto</h2>
+      <p class="section-subtitle">
+        Testimonios reales de nuestro servicio premium de taxi 24h en Madrid
+      </p>
+    </div>
+    
+    <div class="testimonios-grid">
+      <div class="testimonio-card">
+        <div class="testimonio-image">
+          <img src="/images/cliente-feliz.webp" alt="Cliente satisfecho taxi Madrid" />
+          <div class="testimonio-overlay">
+            <div class="quote-icon">"</div>
+          </div>
+        </div>
+        <div class="testimonio-content">
+          <div class="estrellas">
+            ⭐⭐⭐⭐⭐
+          </div>
+          <h3>"Servicio excepcional"</h3>
+          <p>Excelente servicio puntual y muy serio 100% recomendable</p>
+          <div class="cliente-info">
+            <strong>Alejandro Rashidi Gómez</strong>
+            <span>Hace 3 meses</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonio-card">
+        <div class="testimonio-image">
+          <img src="/images/ejecutiva-urbana.webp" alt="Cliente ejecutiva taxi Madrid" />
+          <div class="testimonio-overlay">
+            <div class="quote-icon">"</div>
+          </div>
+        </div>
+        <div class="testimonio-content">
+          <div class="estrellas">
+            ⭐⭐⭐⭐⭐
+          </div>
+          <h3>"Puntualidad garantizada"</h3>
+          <p>Estábamos tirados y nos salvó, recomendaría 100%</p>
+          <div class="cliente-info">
+            <strong>Gustavo Navarro</strong>
+            <span>Hace 3 meses</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonio-card">
+        <div class="testimonio-image">
+          <img src="/images/vips-aeropuerto-equipaje.webp" alt="Traslados perfectos aeropuerto" />
+          <div class="testimonio-overlay">
+            <div class="quote-icon">"</div>
+          </div>
+        </div>
+        <div class="testimonio-content">
+          <div class="estrellas">
+            ⭐⭐⭐⭐⭐
+          </div>
+          <h3>"Traslados perfectos"</h3>
+          <p>Excelente servicio puntual y muy serio 100% recomendable</p>
+          <div class="cliente-info">
+            <strong>Rodrigo Alberto Rodríguez Márquez</strong>
+            <span>4 reseñas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="reseñas-resumen text-center">
+      <div class="puntuacion-general">
+        <div class="puntuacion-numero">5.0</div>
+        <div class="estrellas-grandes">⭐⭐⭐⭐⭐</div>
+        <p>8 reseñas • Servicio de taxis</p>
+        <a href="tel:919930212" class="telefono-link">919 93 02 12</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonios {
+    background: white;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: var(--dark-bg);
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .testimonio-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .testimonio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .testimonio-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .testimonio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .testimonio-card:hover .testimonio-image img {
+    transform: scale(1.1);
+  }
+  
+  .testimonio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      rgba(30, 41, 59, 0.8) 0%,
+      rgba(59, 130, 246, 0.6) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quote-icon {
+    font-size: 4rem;
+    color: white;
+    font-weight: bold;
+    opacity: 0.9;
+  }
+  
+  .testimonio-content {
+    padding: 1.5rem;
+  }
+  
+  .estrellas {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonio-content h3 {
+    color: var(--dark-bg);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  
+  .testimonio-content p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  
+  .cliente-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  
+  .cliente-info strong {
+    color: var(--dark-bg);
+    font-weight: 600;
+  }
+  
+  .cliente-info span {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+  }
+  
+  .reseñas-resumen {
+    background: var(--light-gray);
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+  }
+  
+  .puntuacion-general {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .puntuacion-numero {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fbbf24;
+    margin-bottom: 0.5rem;
+  }
+  
+  .estrellas-grandes {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .puntuacion-general p {
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+  }
+  
+  .telefono-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  .telefono-link:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .testimonios-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .testimonio-image {
+      height: 180px;
+    }
+    
+    .puntuacion-numero {
+      font-size: 3rem;
+    }
+    
+    .estrellas-grandes {
+      font-size: 1.5rem;
+    }
+  }
+</style>

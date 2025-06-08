@@ -1,0 +1,184 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import RecursosSection from '../components/RecursosSection.astro';
+import TestimoniosSection from '../components/TestimoniosSection.astro';
+import VehiculosSection from '../components/VehiculosSection.astro';
+import ServicioVIPSection from '../components/ServicioVIPSection.astro';
+import ReservaContactoSection from '../components/ReservaContactoSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Taxi Madrid Aeropuerto - Servicio 24h Tarifas Fijas | MadridTaxis"
+  description="✈️ Taxi oficial Madrid Aeropuerto Barajas. Tarifas fijas, seguimiento vuelos T1-T4. Servicio ejecutivo y eventos deportivos. ☎️ 919 93 02 12. Reserva ya!"
+>
+  <Header />
+  <main>
+    <HeroSection />
+    <ServicesSection />
+    <RecursosSection />
+    <TestimoniosSection />
+    <VehiculosSection />
+    <ServicioVIPSection />
+    <ReservaContactoSection />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    overflow-x: hidden;
+  }
+  
+  /* Animaciones suaves al hacer scroll */
+  @media (prefers-reduced-motion: no-preference) {
+    section {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+    section:nth-child(5) { animation-delay: 0.5s; }
+    section:nth-child(6) { animation-delay: 0.6s; }
+    section:nth-child(7) { animation-delay: 0.7s; }
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Botón flotante de WhatsApp */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  }
+  
+  /* Botón flotante de calculadora */
+  .calculator-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 6rem; /* A la izquierda del WhatsApp */
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .calculator-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+  }
+  
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      bottom: 1rem;
+      right: 1rem;
+      width: 50px;
+      height: 50px;
+      font-size: 1.3rem;
+    }
+    
+    .calculator-float {
+      bottom: 1rem;
+      right: 4rem; /* Ajustado para móviles */
+      width: 50px;
+      height: 50px;
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* En pantallas muy pequeñas, ponemos los botones en vertical */
+    .calculator-float {
+      bottom: 4.5rem; /* Encima del WhatsApp */
+      right: 1rem;
+    }
+  }
+</style>
+
+<!-- Botones flotantes -->
+<a href="/calcular-precio" class="calculator-float" aria-label="Calculadora de precios oficial">
+  💰
+</a>
+
+<a href="https://wa.me/34919930212" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  💬
+</a>
+
+<script>
+  // Scroll suave para los enlaces internos
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Animación del header al hacer scroll
+    let lastScrollTop = 0;
+    const header = document.querySelector('.header-main'); // Corregido el selector
+    
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scrolling down
+        if (header) header.style.transform = 'translateY(-100%)';
+      } else {
+        // Scrolling up
+        if (header) header.style.transform = 'translateY(0)';
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+  });
+</script>

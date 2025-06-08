@@ -1,0 +1,169 @@
+---
+// src/components/VehiculosSection.astro
+---
+
+<section class="vehiculos section section-light">
+  <div class="container">
+    <div class="vehiculos-content">
+      <div class="vehiculos-image">
+        <img src="/images/estadio-calderon.webp" alt="Flota taxi Madrid estadio Metropolitano" />
+      </div>
+      
+      <div class="vehiculos-info">
+        <h2>Vehículos de Última Generación</h2>
+        
+        <div class="caracteristicas">
+          <div class="caracteristica">
+            <div class="caracteristica-icon">🚗</div>
+            <div class="caracteristica-text">
+              <strong>Flota renovada con vehículos SEAT León y similares</strong>
+            </div>
+          </div>
+          
+          <div class="caracteristica">
+            <div class="caracteristica-icon">❄️</div>
+            <div class="caracteristica-text">
+              <strong>Aire acondicionado y calefacción en todos los vehículos</strong>
+            </div>
+          </div>
+          
+          <div class="caracteristica">
+            <div class="caracteristica-icon">🧳</div>
+            <div class="caracteristica-text">
+              <strong>Amplio maletero para equipaje</strong>
+            </div>
+          </div>
+          
+          <div class="caracteristica">
+            <div class="caracteristica-icon">🧽</div>
+            <div class="caracteristica-text">
+              <strong>Mantenimiento regular y limpieza diaria</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="vehiculos-action">
+          <a href="/flota" class="btn btn-primary">Ver Nuestra Flota</a>
+          <a href="tel:919930212" class="btn btn-outline">Reservar Ahora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vehiculos {
+    background: var(--light-gray);
+  }
+  
+  .vehiculos-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .vehiculos-image {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .vehiculos-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .vehiculos-image:hover img {
+    transform: scale(1.05);
+  }
+  
+  .vehiculos-info h2 {
+    font-size: 2.5rem;
+    color: var(--dark-bg);
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+  
+  .caracteristicas {
+    margin-bottom: 2.5rem;
+  }
+  
+  .caracteristica {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .caracteristica:hover {
+    transform: translateX(5px);
+  }
+  
+  .caracteristica-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), #ef4444);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .caracteristica-text {
+    flex: 1;
+  }
+  
+  .caracteristica-text strong {
+    color: var(--dark-bg);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  
+  .vehiculos-action {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 1024px) {
+    .vehiculos-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+    
+    .vehiculos-info h2 {
+      font-size: 2rem;
+    }
+    
+    .vehiculos-image img {
+      height: 300px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .vehiculos-action {
+      flex-direction: column;
+    }
+    
+    .caracteristica {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+    
+    .vehiculos-info h2 {
+      font-size: 1.8rem;
+    }
+  }
+</style>

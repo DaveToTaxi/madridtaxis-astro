@@ -1,0 +1,185 @@
+---
+// src/components/ServicesSection.astro
+---
+
+<section class="services section">
+  <div class="container">
+    <div class="section-header text-center mb-12">
+      <h2>Servicios Especializados Taxi Madrid Oficial</h2>
+      <p class="section-subtitle">
+        Taxi aeropuerto Madrid, servicio ejecutivo y eventos deportivos con experiencia premium
+      </p>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/images/aeropuerto-atardecer.webp" alt="Traslados Aeropuerto Madrid" />
+          <div class="service-overlay"></div>
+        </div>
+        <div class="service-content">
+          <h3>Traslados Aeropuerto Madrid Barajas</h3>
+          <p>Servicio oficial taxi aeropuerto Madrid con seguimiento vuelos T1 T2 T3 T4</p>
+          <div class="service-features">
+            <span class="feature-tag">Tarifa Fija</span>
+            <span class="feature-tag">24/7</span>
+            <span class="feature-tag">Seguimiento Vuelos</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/images/ejecutivos-sonriendo.webp" alt="Servicio Ejecutivo Madrid" />
+          <div class="service-overlay"></div>
+        </div>
+        <div class="service-content">
+          <h3>Servicio Ejecutivo Empresarial Madrid</h3>
+          <p>Taxi premium Madrid centro financiero para empresarios y profesionales</p>
+          <div class="service-features">
+            <span class="feature-tag">Premium</span>
+            <span class="feature-tag">Corporativo</span>
+            <span class="feature-tag">Confidencial</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/images/estadio-metropolitano.webp" alt="Eventos Deportivos Madrid" />
+          <div class="service-overlay"></div>
+        </div>
+        <div class="service-content">
+          <h3>Eventos Deportivos Real Madrid Atlético</h3>
+          <p>Taxi especializado estadios Madrid Bernabéu Metropolitano eventos masivos</p>
+          <div class="service-features">
+            <span class="feature-tag">Estadios</span>
+            <span class="feature-tag">Eventos</span>
+            <span class="feature-tag">VIP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: var(--dark-bg);
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .service-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .service-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+  
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-card:hover .service-image img {
+    transform: scale(1.1);
+  }
+  
+  .service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      rgba(220, 38, 38, 0.8) 0%,
+      rgba(30, 41, 59, 0.6) 100%
+    );
+  }
+  
+  .service-content {
+    padding: 2rem;
+  }
+  
+  .service-content h3 {
+    color: var(--dark-bg);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .service-content p {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .service-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .feature-tag {
+    background: linear-gradient(135deg, var(--primary-color), #ef4444);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .service-card {
+      margin: 0 1rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .service-image {
+      height: 200px;
+    }
+  }
+</style>

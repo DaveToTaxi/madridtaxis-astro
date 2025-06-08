@@ -1,0 +1,383 @@
+---
+// src/components/ReservaContactoSection.astro
+---
+
+<section class="reserva-contacto section">
+  <div class="container">
+    <div class="section-header text-center mb-12">
+      <h2>Reservar un Taxi en Madrid</h2>
+      <p class="section-subtitle">
+        Complete el formulario y nos pondremos en contacto
+      </p>
+    </div>
+    
+    <div class="reserva-form-container">
+      <form class="reserva-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="punto-recogida">Punto de recogida:</label>
+            <input 
+              type="text" 
+              id="punto-recogida" 
+              name="punto-recogida" 
+              placeholder="Ej: Gran Vía 32, Madrid"
+              class="form-input"
+              required
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="destino">Destino:</label>
+            <input 
+              type="text" 
+              id="destino" 
+              name="destino" 
+              placeholder="Ej: Aeropuerto T4, Madrid"
+              class="form-input"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input 
+              type="date" 
+              id="fecha" 
+              name="fecha" 
+              class="form-input"
+              required
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="hora">Hora de recogida:</label>
+            <input 
+              type="time" 
+              id="hora" 
+              name="hora" 
+              class="form-input"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nombre">Nombre completo:</label>
+            <input 
+              type="text" 
+              id="nombre" 
+              name="nombre" 
+              placeholder="Su nombre completo"
+              class="form-input"
+              required
+            />
+          </div>
+          
+          <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input 
+              type="tel" 
+              id="telefono" 
+              name="telefono" 
+              placeholder="+34 600 000 000"
+              class="form-input"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="observaciones">Observaciones adicionales:</label>
+          <textarea 
+            id="observaciones" 
+            name="observaciones" 
+            placeholder="Número de vuelo, equipaje especial, etc."
+            class="form-textarea"
+            rows="3"
+          ></textarea>
+        </div>
+        
+        <div class="form-checkbox">
+          <input type="checkbox" id="privacidad" name="privacidad" required>
+          <label for="privacidad">
+            He leído y acepto la <a href="/politica-privacidad">Política de Privacidad</a>.
+          </label>
+        </div>
+        
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-large">
+            Solicitar Taxi
+          </button>
+        </div>
+      </form>
+      
+              <div class="contacto-directo">
+        <h3>¿Necesita taxi inmediato?</h3>
+        <p>Llámenos directamente para reservas urgentes</p>
+        
+        <div class="contacto-opciones">
+          <a href="tel:919930212" class="contacto-btn telefono">
+            <div class="contacto-icon">📞</div>
+            <div class="contacto-info">
+              <strong>Llamar Ahora</strong>
+              <span>919 93 02 12</span>
+            </div>
+          </a>
+          
+          <a href="https://wa.me/34919930212" class="contacto-btn whatsapp">
+            <div class="contacto-icon">💬</div>
+            <div class="contacto-info">
+              <strong>WhatsApp</strong>
+              <span>Disponible 24/7</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="horarios">
+          <h4>Horarios de Atención</h4>
+          <p><strong>Teléfono:</strong> 24 horas, 7 días a la semana</p>
+          <p><strong>WhatsApp:</strong> 24 horas, 7 días a la semana</p>
+          <p><strong>Email:</strong> info@madridtaxis.es</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reserva-contacto {
+    background: white;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: var(--dark-bg);
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .reserva-form-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .reserva-form {
+    background: var(--light-gray);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    color: var(--dark-bg);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-gray);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+    background: white;
+  }
+  
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+  
+  .form-textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form-checkbox input[type="checkbox"] {
+    margin-top: 0.2rem;
+    transform: scale(1.2);
+  }
+  
+  .form-checkbox label {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .form-checkbox a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .form-checkbox a:hover {
+    text-decoration: underline;
+  }
+  
+  .form-submit {
+    text-align: center;
+  }
+  
+  .btn-large {
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+  
+  .contacto-directo {
+    background: var(--dark-bg);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    height: fit-content;
+  }
+  
+  .contacto-directo h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .contacto-directo > p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+  }
+  
+  .contacto-opciones {
+    margin-bottom: 2rem;
+  }
+  
+  .contacto-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.8rem;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .contacto-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .contacto-btn.telefono:hover {
+    background: rgba(59, 130, 246, 0.3);
+  }
+  
+  .contacto-btn.whatsapp:hover {
+    background: rgba(37, 211, 102, 0.3);
+  }
+  
+  .contacto-icon {
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .contacto-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contacto-info strong {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  
+  .contacto-info span {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+  }
+  
+  .horarios {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .horarios h4 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .horarios p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 1024px) {
+    .reserva-form-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .reserva-form,
+    .contacto-directo {
+      padding: 1.5rem;
+    }
+    
+    .contacto-btn {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+  }
+</style>

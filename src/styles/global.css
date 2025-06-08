@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Protección específica para Leaflet */
+.leaflet-container,
+.leaflet-container * {
+  box-sizing: content-box !important;
+}
+
+.leaflet-container {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+/* Evitar conflictos de reset */
+.leaflet-control-container .leaflet-control {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 4px !important;
+}
+
+/* Estilos base necesarios */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+/* Proteger imágenes excepto las de Leaflet */
+img:not([src*="leaflet"]):not(.leaflet-image-layer) {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+section {
+  scroll-margin-top: 5rem;
+}
+
+/* Z-index específico para mapas */
+.map-container {
+  z-index: 1;
+  position: relative;
+}
+
+.leaflet-container {
+  z-index: 1 !important;
+}
+
+/* Asegurar que Leaflet controls funcionen */
+.leaflet-control-zoom a {
+  color: #333 !important;
+  text-decoration: none !important;
+}

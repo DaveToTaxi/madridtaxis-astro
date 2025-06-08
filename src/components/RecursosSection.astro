@@ -1,0 +1,219 @@
+---
+// src/components/RecursosSection.astro
+---
+
+<section class="recursos section section-light">
+  <div class="container">
+    <div class="section-header text-center mb-12">
+      <h2>Recursos y Guías Útiles</h2>
+      <p class="section-subtitle">
+        Encuentra toda la información que necesitas sobre nuestros servicios de taxi en Madrid
+      </p>
+    </div>
+    
+    <div class="recursos-grid">
+      <article class="recurso-card">
+        <div class="recurso-image">
+          <img src="/images/taxi-hero-1.webp" alt="Tarifas Taxi Madrid 2025" />
+          <div class="recurso-badge tarifas">Tarifas 2025</div>
+        </div>
+        <div class="recurso-content">
+          <h3>Tarifas Oficiales Taxi Madrid 2025</h3>
+          <p>Guía completa con todas las tarifas oficiales, suplementos y calculadora de precios incluida.</p>
+          <div class="recurso-meta">
+            <span class="meta-item">5 min lectura</span>
+            <span class="meta-item">Actualizado 2025</span>
+          </div>
+        </div>
+      </article>
+      
+      <article class="recurso-card">
+        <div class="recurso-image">
+          <img src="/images/aeropuerto-llegadas.webp" alt="Guía Taxi Aeropuerto Madrid" />
+          <div class="recurso-badge aeropuerto">Aeropuerto</div>
+        </div>
+        <div class="recurso-content">
+          <h3>Guía Taxi Aeropuerto Madrid</h3>
+          <p>Todo sobre el servicio de taxi desde Barajas: terminales, tarifas fijas y consejos prácticos.</p>
+          <div class="recurso-meta">
+            <span class="meta-item">7 min lectura</span>
+            <span class="meta-item">Guía completa</span>
+          </div>
+        </div>
+      </article>
+      
+      <article class="recurso-card">
+        <div class="recurso-image">
+          <div class="calculadora-preview">
+            <div class="calc-icon">🧮</div>
+            <div class="calc-text">Calculadora</div>
+          </div>
+          <div class="recurso-badge herramienta">Herramienta</div>
+        </div>
+        <div class="recurso-content">
+          <h3>Calculadora de Precios</h3>
+          <p>Calcula el precio exacto de tu viaje con tarifas oficiales y rutas optimizadas.</p>
+          <div class="recurso-meta">
+            <span class="meta-item">Uso inmediato</span>
+            <span class="meta-item">Tarifas oficiales</span>
+          </div>
+        </div>
+      </article>
+    </div>
+    
+    <div class="recursos-action text-center">
+      <a href="/blog" class="btn btn-outline">Ver Todos los Artículos</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .recursos {
+    background: var(--light-gray);
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: var(--dark-bg);
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .recursos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .recurso-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .recurso-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .recurso-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .recurso-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .recurso-card:hover .recurso-image img {
+    transform: scale(1.05);
+  }
+  
+  .calculadora-preview {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color), #10b981);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .calc-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .calc-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .recurso-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    z-index: 10;
+  }
+  
+  .recurso-badge.tarifas {
+    background: var(--primary-color);
+  }
+  
+  .recurso-badge.aeropuerto {
+    background: var(--accent-color);
+  }
+  
+  .recurso-badge.herramienta {
+    background: var(--secondary-color);
+  }
+  
+  .recurso-content {
+    padding: 1.5rem;
+  }
+  
+  .recurso-content h3 {
+    color: var(--dark-bg);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  
+  .recurso-content p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .recurso-meta {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .meta-item {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    background: var(--light-gray);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+  }
+  
+  .recursos-action {
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .recursos-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .recurso-image {
+      height: 180px;
+    }
+  }
+</style>

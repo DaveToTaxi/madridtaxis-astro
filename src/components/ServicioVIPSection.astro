@@ -1,0 +1,198 @@
+---
+// src/components/ServicioVIPSection.astro
+---
+
+<section class="servicio-vip section section-dark">
+  <div class="container">
+    <div class="vip-content">
+      <div class="vip-info">
+        <h2>Servicio VIP Taxi Madrid Ejecutivos</h2>
+        <p class="vip-subtitle">
+          Servicio exclusivo de taxi Madrid para deportistas del Real Madrid, 
+          Atlético y ejecutivos con máxima discreción profesional.
+        </p>
+        
+        <div class="vip-features">
+          <div class="vip-feature">
+            <div class="feature-icon">👤</div>
+            <span>Conductores especializados y discretos</span>
+          </div>
+          
+          <div class="vip-feature">
+            <div class="feature-icon">🚗</div>
+            <span>Vehículos premium con máximo confort</span>
+          </div>
+          
+          <div class="vip-feature">
+            <div class="feature-icon">🕐</div>
+            <span>Servicio personalizado 24/7</span>
+          </div>
+        </div>
+        
+        <div class="vip-action">
+          <a href="/servicio-vip" class="btn btn-primary">Solicitar Servicio VIP</a>
+          <a href="tel:919930212" class="btn btn-outline-white">Contactar Ahora</a>
+        </div>
+      </div>
+      
+      <div class="vip-image">
+        <img src="/images/vip-aeropuerto.webp" alt="Servicio VIP taxi Madrid ejecutivos aeropuerto" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicio-vip {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #0f172a 100%);
+    color: white;
+  }
+  
+  .vip-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .vip-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff, #e2e8f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .vip-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+  
+  .vip-features {
+    margin-bottom: 2.5rem;
+  }
+  
+  .vip-feature {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.8rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .vip-feature:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+  }
+  
+  .feature-icon {
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--primary-color), #ef4444);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .vip-feature span {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+  }
+  
+  .vip-action {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .btn-outline-white {
+    background-color: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .btn-outline-white:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+  }
+  
+  .vip-image {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  }
+  
+  .vip-image img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .vip-image:hover img {
+    transform: scale(1.05);
+  }
+  
+  .vip-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      rgba(220, 38, 38, 0.3) 0%,
+      rgba(59, 130, 246, 0.2) 100%
+    );
+    z-index: 1;
+  }
+  
+  @media (max-width: 1024px) {
+    .vip-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+    
+    .vip-info h2 {
+      font-size: 2rem;
+    }
+    
+    .vip-image img {
+      height: 350px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .vip-action {
+      flex-direction: column;
+    }
+    
+    .vip-feature {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+    
+    .vip-info h2 {
+      font-size: 1.8rem;
+    }
+    
+    .vip-subtitle {
+      font-size: 1.1rem;
+    }
+  }
+</style>
