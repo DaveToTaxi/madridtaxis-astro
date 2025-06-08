@@ -8,7 +8,15 @@
   <div class="splash-overlay-fullscreen" aria-hidden="true">
     <div class="splash-content">
       <div class="splash-logo">
-        <img src="/images/logo-madridtaxis.png" alt="Logo MadridTaxis - Taxi Las Rozas Aeropuerto" class="splash-logo-img">
+        <img 
+          src="/images/logo-madridtaxis.png" 
+          alt="Logo MadridTaxis - Taxi Las Rozas Aeropuerto" 
+          class="splash-logo-img"
+          width="120"
+          height="120"
+          loading="eager"
+          fetchpriority="high"
+        >
         <div class="splash-subtitle">Desde Las Rozas al Aeropuerto, 24h</div>
       </div>
     </div>
@@ -16,7 +24,16 @@
   
   <!-- Contenido principal (SIEMPRE visible para SEO) -->
   <div class="hero-background">
-    <img src="/images/taxi-madrid-hero.webp" alt="Taxi Madrid Aeropuerto" />
+    <div class="image-wrapper">
+      <img 
+        src="/images/taxi-madrid-hero.webp" 
+        alt="Taxi Madrid Aeropuerto"
+        width="1920"
+        height="1080"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
     <div class="hero-overlay"></div>
   </div>
   
@@ -458,5 +475,15 @@
     .splash-subtitle {
       font-size: 1rem;
     }
+  }
+
+  /* Layout Estable con Espacio Reservado SOLO para el hero background */
+  .image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #e2e8f0; /* Color gris suave */
   }
 </style>
