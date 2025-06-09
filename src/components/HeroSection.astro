@@ -24,16 +24,24 @@
   
   <!-- Contenido principal (SIEMPRE visible para SEO) -->
   <div class="hero-background">
-    <div class="image-wrapper">
-      <img 
-        src="/images/taxi-madrid-hero.webp" 
+    <picture>
+      <source
+        srcset="/images/taxi-barajas-hero-480.webp 480w, /images/taxi-barajas-hero-1024.webp 1024w, /images/taxi-barajas-hero-1920.webp 1920w"
+        type="image/webp"
+        sizes="(max-width: 480px) 480px, (max-width: 1024px) 1024px, 1920px"
+      >
+      <img
+        src="/images/taxi-barajas-hero-1024.webp"
+        srcset="/images/taxi-barajas-hero-480.webp 480w, /images/taxi-barajas-hero-1024.webp 1024w, /images/taxi-barajas-hero-1920.webp 1920w"
+        sizes="(max-width: 480px) 480px, (max-width: 1024px) 1024px, 1920px"
         alt="Taxi Madrid Aeropuerto"
         width="1920"
-        height="1080"
+        height="1280"
         loading="eager"
         fetchpriority="high"
+        style="object-fit:cover;width:100%;height:100%;"
       />
-    </div>
+    </picture>
     <div class="hero-overlay"></div>
   </div>
   
