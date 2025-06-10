@@ -19,13 +19,81 @@ const { title, description = "Taxi Madrid Aeropuerto - Servicio 24h con tarifas 
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   
-  <!-- Preload de imagen LCP para carga prioritaria -->
+  <!-- Preload de recursos críticos -->
   <link rel="preload" as="image" href="/images/taxi-barajas-hero-1920.webp" fetchpriority="high">
-
-  <!-- Fuentes Google -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preload" as="image" href="/images/logo-madridtaxis.png" fetchpriority="high">
+  
+  <!-- Preconnect y preload de fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Critical CSS inline -->
+  <style is:inline>
+    /* CRITICAL CSS FOR HERO AND SPLASH */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+    .splash-overlay-fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      animation: splashFadeOut 0.3s ease forwards;
+      animation-delay: 0.5s;
+      pointer-events: none;
+      will-change: opacity;
+    }
+    @keyframes splashFadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .splash-content {
+      text-align: center;
+      animation: splashFadeInUp 0.5s ease-out;
+    }
+    @keyframes splashFadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .splash-logo-img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 2rem;
+    }
+    .splash-subtitle {
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      font-family: 'Inter', sans-serif;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .splash-overlay-fullscreen,
+      .splash-content {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <slot />

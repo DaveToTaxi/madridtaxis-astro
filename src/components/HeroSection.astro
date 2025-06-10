@@ -3,6 +3,31 @@
 // Hero con splash de PANTALLA COMPLETA optimizado para SEO
 ---
 
+<style is:inline>
+  /* CRITICAL CSS FOR SPLASH - Máxima prioridad */
+  .splash-overlay-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    animation: splashFadeOut 0.3s ease forwards;
+    animation-delay: 0.5s;
+    pointer-events: none;
+    will-change: opacity;
+  }
+  @keyframes splashFadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+</style>
+
 <section class="hero">
   <!-- SPLASH PANTALLA COMPLETA - cubre header y todo -->
   <div class="splash-overlay-fullscreen" aria-hidden="true">
@@ -16,6 +41,7 @@
           height="120"
           loading="eager"
           fetchpriority="high"
+          decoding="sync"
         >
         <div class="splash-subtitle">Desde Las Rozas al Aeropuerto, 24h</div>
       </div>
@@ -122,25 +148,6 @@
     margin-top: 60px;
   }
   
-  /* SPLASH PANTALLA COMPLETA - CUBRE TODO INCLUSO HEADER */
-  .splash-overlay-fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para permitir ver el hero */
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99999;
-    animation: splashFadeOut 0.5s ease forwards;
-    animation-delay: 0.5s;
-    pointer-events: none;
-    will-change: opacity; /* Optimización GPU para la transición de opacidad */
-  }
-  
   .splash-content {
     text-align: center;
     animation: splashFadeInUp 0.8s ease-out;
@@ -186,16 +193,6 @@
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
-    }
-  }
-  
-  @keyframes splashFadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      /* Eliminamos visibility: hidden para no bloquear el LCP visual */
     }
   }
   
