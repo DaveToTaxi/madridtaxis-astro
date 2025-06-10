@@ -1,6 +1,6 @@
 ---
 // src/components/HeroSection.astro
-// Hero con splash de PANTALLA COMPLETA optimizado para LCP
+// Hero con splash de PANTALLA COMPLETA optimizado para LCP y móvil
 ---
 
 <style is:inline>
@@ -52,14 +52,21 @@
   <div class="hero-background">
     <picture>
       <source
-        srcset="/images/taxi-barajas-hero-480.webp 480w, /images/taxi-barajas-hero-1024.webp 1024w, /images/taxi-barajas-hero-1920.webp 1920w"
+        media="(max-width: 480px)"
+        srcset="/images/taxi-barajas-hero-480.webp"
         type="image/webp"
-        sizes="(max-width: 480px) 480px, (max-width: 1024px) 1024px, 1920px"
+      >
+      <source
+        media="(max-width: 1024px)"
+        srcset="/images/taxi-barajas-hero-1024.webp"
+        type="image/webp"
+      >
+      <source
+        srcset="/images/taxi-barajas-hero-1920.webp"
+        type="image/webp"
       >
       <img
         src="/images/taxi-barajas-hero-1024.webp"
-        srcset="/images/taxi-barajas-hero-480.webp 480w, /images/taxi-barajas-hero-1024.webp 1024w, /images/taxi-barajas-hero-1920.webp 1920w"
-        sizes="(max-width: 480px) 480px, (max-width: 1024px) 1024px, 1920px"
         alt="Taxi Madrid Aeropuerto"
         width="1920"
         height="1280"
@@ -150,100 +157,35 @@
   
   .splash-content {
     text-align: center;
-    animation: splashFadeInUp 0.8s ease-out;
   }
   
   .splash-logo {
-    animation: splashPulseGlow 2s ease-in-out infinite;
+    opacity: 1;
   }
   
   .splash-logo-img {
-    width: 120px;             /* Tamaño del logo */
+    width: 120px;
     height: 120px;
     margin-bottom: 2rem;
-    filter: brightness(1.2) drop-shadow(0 0 20px rgba(255,255,255,0.3));
-    transition: all 0.3s ease;
-  }
-  
-  .splash-title {
-    font-size: 3.5rem;        /* Más grande para pantalla completa */
-    letter-spacing: 0.15em;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #ffffff, #e2e8f0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
   
   .splash-subtitle {
-    font-size: 1.3rem;        /* Más grande para pantalla completa */
+    font-size: 1.3rem;
     font-weight: 300;
     letter-spacing: 0.1em;
     font-family: 'Inter', sans-serif;
     color: rgba(255, 255, 255, 0.9);
   }
   
-  @keyframes splashFadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(15px) scale(0.98); /* Más sutil */
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-  
-  @keyframes splashPulseGlow {
-    0%, 100% {
-      filter: brightness(1.2) drop-shadow(0 0 20px rgba(255,255,255,0.3));
-    }
-    50% {
-      filter: brightness(1.4) drop-shadow(0 0 30px rgba(255,255,255,0.6));
-    }
-  }
-  
   /* CONTENIDO PRINCIPAL - SEO optimizado */
   .hero-content {
-    opacity: 1;               /* SIEMPRE visible para SEO */
+    opacity: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
     min-height: 600px;
     color: white;
-    
-    /* Animación visual suave después del splash */
-    animation: heroContentShow 1s ease forwards;
-    animation-delay: 2.2s;
-    transform: translateY(20px);
-  }
-  
-  @keyframes heroContentShow {
-    to {
-      transform: translateY(0);
-    }
-  }
-  
-  /* ACCESIBILIDAD - Respeta preferencias del usuario */
-  @media (prefers-reduced-motion: reduce) {
-    .splash-overlay-fullscreen {
-      display: none;          /* Sin splash si el usuario prefiere sin animaciones */
-    }
-    
-    .splash-title,
-    .splash-subtitle,
-    .splash-content,
-    .splash-logo {
-      animation: none;
-    }
-    
-    .hero-content {
-      animation: none;
-      transform: none;
-    }
   }
   
   /* ESTILOS ORIGINALES DEL HERO */
@@ -412,10 +354,6 @@
       margin-bottom: 1.5rem;
     }
     
-    .splash-title {
-      font-size: 3rem;
-    }
-    
     .splash-subtitle {
       font-size: 1.2rem;
     }
@@ -453,10 +391,6 @@
       margin-bottom: 1rem;
     }
     
-    .splash-title {
-      font-size: 2.5rem;
-    }
-    
     .splash-subtitle {
       font-size: 1.1rem;
     }
@@ -469,22 +403,18 @@
       margin-bottom: 0.8rem;
     }
     
-    .splash-title {
-      font-size: 2rem;
-    }
-    
     .splash-subtitle {
       font-size: 1rem;
     }
   }
 
-  /* Layout Estable con Espacio Reservado SOLO para el hero background */
+  /* Layout Estable con Espacio Reservado */
   .image-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #e2e8f0; /* Color gris suave */
+    background: #e2e8f0;
   }
 </style>
