@@ -19,6 +19,9 @@ const { title, description = "Taxi Madrid Aeropuerto - Servicio 24h con tarifas 
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   
+  <!-- Preload de imagen LCP para carga prioritaria -->
+  <link rel="preload" as="image" href="/images/taxi-barajas-hero-1920.webp" fetchpriority="high">
+
   <!-- Fuentes Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
