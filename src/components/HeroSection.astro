@@ -123,20 +123,20 @@
   
   /* SPLASH PANTALLA COMPLETA - CUBRE TODO INCLUSO HEADER */
   .splash-overlay-fullscreen {
-    position: fixed;           /* FIXED = pantalla completa real */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;             /* 100% del viewport */
-    height: 100vh;            /* 100% de la altura */
-    background: #000;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para permitir ver el hero */
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 99999;           /* Por encima de TODO (header incluido) */
+    z-index: 99999;
     animation: splashFadeOut 0.5s ease forwards;
     animation-delay: 0.5s;
-    pointer-events: none;     /* No interfiere con SEO */
+    pointer-events: none;
   }
   
   .splash-content {
@@ -179,7 +179,7 @@
   @keyframes splashFadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px) scale(0.95);
+      transform: translateY(15px) scale(0.98); /* Más sutil */
     }
     to {
       opacity: 1;
@@ -190,15 +190,12 @@
   @keyframes splashFadeOut {
     0% {
       opacity: 1;
-      transform: scale(1);
     }
     70% {
-      opacity: 1;
-      transform: scale(1.02);
+      opacity: 0.8;
     }
     100% {
       opacity: 0;
-      transform: scale(1.05);
       visibility: hidden;
     }
   }
