@@ -19,19 +19,17 @@ const { title, description = "Taxi Madrid Aeropuerto - Servicio 24h con tarifas 
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   
-  <!-- Preload de recursos críticos -->
+  <!-- Preload crítico -->
   <link rel="preload" as="image" href="/images/taxi-barajas-hero-1920.webp" fetchpriority="high">
   <link rel="preload" as="image" href="/images/logo-madridtaxis.png" fetchpriority="high">
   
-  <!-- Preconnect y preload de fuentes -->
+  <!-- Preconnect crítico -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Critical CSS inline -->
+  
+  <!-- Critical CSS inline - Mínimo necesario -->
   <style is:inline>
-    /* CRITICAL CSS FOR HERO AND SPLASH */
+    /* CRITICAL CSS - Mínimo necesario para LCP */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -52,28 +50,14 @@ const { title, description = "Taxi Madrid Aeropuerto - Servicio 24h con tarifas 
       align-items: center;
       justify-content: center;
       z-index: 99999;
-      animation: splashFadeOut 0.3s ease forwards;
-      animation-delay: 0.5s;
-      pointer-events: none;
-      will-change: opacity;
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
-    @keyframes splashFadeOut {
-      0% { opacity: 1; }
-      100% { opacity: 0; }
+    .splash-overlay-fullscreen.fade-out {
+      opacity: 0;
     }
     .splash-content {
       text-align: center;
-      animation: splashFadeInUp 0.5s ease-out;
-    }
-    @keyframes splashFadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
     .splash-logo-img {
       width: 120px;
@@ -84,19 +68,43 @@ const { title, description = "Taxi Madrid Aeropuerto - Servicio 24h con tarifas 
       font-size: 1.3rem;
       font-weight: 300;
       letter-spacing: 0.1em;
-      font-family: 'Inter', sans-serif;
       color: rgba(255, 255, 255, 0.9);
     }
-    @media (prefers-reduced-motion: reduce) {
-      .splash-overlay-fullscreen,
-      .splash-content {
-        animation: none;
-      }
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+    .hero-background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   </style>
+
+  <!-- Cargar fuentes de forma no bloqueante -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
 </head>
 <body>
   <slot />
+  
+  <!-- Script para manejar el splash de forma no bloqueante -->
+  <script is:inline>
+    // Manejar el splash de forma no bloqueante
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const splash = document.querySelector('.splash-overlay-fullscreen');
+        if (splash) {
+          splash.classList.add('fade-out');
+          setTimeout(() => splash.remove(), 300);
+        }
+      }, 500);
+    });
+  </script>
   
   <style is:global>
     * {
