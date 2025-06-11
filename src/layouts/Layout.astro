@@ -44,7 +44,7 @@ const criticalCSS = `
   }
 
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: system-ui, -apple-system, sans-serif;
     line-height: 1.5;
     color: #1f2937;
     background: white;
@@ -100,7 +100,7 @@ const criticalCSS = `
 </html>
 
 <style is:global>
-  /* Estilos globales no críticos */
+  /* Estilos globales (NO críticos para LCP) */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -109,7 +109,7 @@ const criticalCSS = `
     border-radius: 0.5rem;
     font-weight: 500;
     text-decoration: none;
-    transition: background-color 0.2s;
+    /* transition: background-color 0.2s; */ /* Eliminado para mejorar rendimiento */
     cursor: pointer;
     border: none;
   }

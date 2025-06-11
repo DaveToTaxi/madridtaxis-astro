@@ -1,6 +1,11 @@
 ---
 // src/components/HeroSection.astro
 // Hero con splash de PANTALLA COMPLETA optimizado para LCP y móvil
+import { Picture } from 'astro:assets';
+import taxiBarajasHero480 from '../assets/images/taxi-barajas-hero-480.webp';
+import taxiBarajasHero1024 from '../assets/images/taxi-barajas-hero-1024.webp';
+import taxiBarajasHero1920 from '../assets/images/taxi-barajas-hero-1920.webp';
+import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
 ---
 
 <style is:inline>
@@ -50,32 +55,19 @@
   
   <!-- Contenido principal (SIEMPRE visible para SEO) -->
   <div class="hero-background">
-    <picture>
-      <source
-        media="(max-width: 480px)"
-        srcset="/images/taxi-barajas-hero-480.webp"
-        type="image/webp"
-      >
-      <source
-        media="(max-width: 1024px)"
-        srcset="/images/taxi-barajas-hero-1024.webp"
-        type="image/webp"
-      >
-      <source
-        srcset="/images/taxi-barajas-hero-1920.webp"
-        type="image/webp"
-      >
-      <img
-        src="/images/taxi-barajas-hero-1024.webp"
-        alt="Taxi Madrid Aeropuerto"
-        width="1920"
-        height="1280"
-        loading="eager"
-        fetchpriority="high"
-        decoding="sync"
-        style="object-fit:cover;width:100%;height:100%;opacity:1;visibility:visible;display:block;"
-      />
-    </picture>
+    <Picture 
+      src={taxiBarajasHero1920}
+      alt="Taxi Madrid Aeropuerto"
+      widths={[480, 1024, 1920]}
+      sizes="(max-width: 480px) 480px, (max-width: 1024px) 1024px, 1920px"
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+      formats={['webp', 'jpeg']}
+      fallbackFormat="jpeg"
+      quality={75}
+      class="hero-background-img"
+    />
     <div class="hero-overlay"></div>
   </div>
   
@@ -187,7 +179,7 @@
     font-size: 1.3rem;
     font-weight: 300;
     letter-spacing: 0.1em;
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif; /* Usar fuente genérica ya que Inter fue removida */
     color: rgba(255, 255, 255, 0.9);
   }
   
@@ -212,7 +204,7 @@
     z-index: -2;
   }
   
-  .hero-background img {
+  .hero-background-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -243,7 +235,7 @@
     /* backdrop-filter: blur(10px); */ /* Eliminado por rendimiento */
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); */ /* Eliminado por rendimiento */
     color: #333;
   }
   
@@ -309,7 +301,7 @@
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */ /* Eliminado por rendimiento */
   }
   
   .hero-subtitle {
