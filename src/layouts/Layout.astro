@@ -4,7 +4,7 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css'; // Importar estilos globales no críticos
-import taxiBarajasHero480 from '../assets/images/taxi-barajas-hero-480.webp';
+import taxiBarajasHero480 from '../assets/images/taxi-barajas-hero-480.webp'; // Importar la imagen hero
 
 interface Props {
   title: string;
@@ -21,7 +21,8 @@ const {
 // Preload de recursos críticos
 const preloadLinks = [
   { rel: 'preload', href: '/images/logo-madridtaxis.png', as: 'image' },
-  { rel: 'preload', href: taxiBarajasHero480.src, as: 'image' }
+  // Precarga para la imagen hero, priorizando móviles
+  { rel: 'preload', href: taxiBarajasHero480.src, as: 'image', media: '(max-width: 768px)', fetchpriority: 'high' }
 ];
 
 // CSS crítico inline
