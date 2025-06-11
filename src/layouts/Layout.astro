@@ -3,6 +3,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/global.css'; // Importar estilos globales no críticos
 
 interface Props {
   title: string;
@@ -16,10 +17,10 @@ const {
   image = '/images/taxi-barajas-hero-1024.webp'
 } = Astro.props;
 
-// Preload de recursos críticos (eliminando preload de fuente)
+// Preload de recursos críticos
 const preloadLinks = [
-  { rel: 'preload', href: '/images/logo-madridtaxis.png', as: 'image' },
-  { rel: 'preload', href: image, as: 'image' }
+  { rel: 'preload', href: '/images/logo-madridtaxis.png', as: 'image', fetchpriority: 'high' },
+  { rel: 'preload', href: image, as: 'image', fetchpriority: 'high' }
 ];
 
 // CSS crítico inline
@@ -48,6 +49,7 @@ const criticalCSS = `
     line-height: 1.5;
     color: #1f2937;
     background: white;
+    overflow-x: hidden;
   }
 
   .container {
@@ -99,8 +101,8 @@ const criticalCSS = `
   </body>
 </html>
 
-<style is:global>
-  /* Estilos globales (NO críticos para LCP) */
+<!-- Estilos globales movidos a src/styles/global.css -->
+<!-- <style is:global>
   .btn {
     display: inline-flex;
     align-items: center;
@@ -109,7 +111,6 @@ const criticalCSS = `
     border-radius: 0.5rem;
     font-weight: 500;
     text-decoration: none;
-    /* transition: background-color 0.2s; */ /* Eliminado para mejorar rendimiento */
     cursor: pointer;
     border: none;
   }
@@ -196,4 +197,4 @@ const criticalCSS = `
       padding: 0 1rem;
     }
   }
-</style>
+</style> -->

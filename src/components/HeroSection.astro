@@ -22,14 +22,8 @@ import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
     align-items: center;
     justify-content: center;
     z-index: 99999;
-    opacity: 1;
-    transition: opacity 0.3s ease; /* Transición suave de opacidad */
-    pointer-events: none;
-    will-change: opacity;
-  }
-  .splash-overlay-fullscreen.hidden {
     opacity: 0;
-    display: none; /* Asegura que el elemento no ocupe espacio y no bloquee el renderizado */
+    visibility: hidden;
   }
 </style>
 
@@ -55,19 +49,14 @@ import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
   
   <!-- Contenido principal (SIEMPRE visible para SEO) -->
   <div class="hero-background">
-    <Picture 
-      src={taxiBarajasHero1920}
+    <Picture
+      src={taxiBarajasHero480}
       alt="Taxi Madrid Aeropuerto"
-      width={1920}
-      height={1280}
       widths={[480, 1024, 1920]}
       sizes="100vw"
       loading="eager"
       fetchpriority="high"
       decoding="sync"
-      formats={['webp', 'jpeg']}
-      fallbackFormat="jpeg"
-      quality={75}
       class="hero-background-img"
     />
     <div class="hero-overlay"></div>
@@ -140,17 +129,19 @@ import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
 </section>
 
 <script is:inline>
-  // Manejar el splash de forma no bloqueante y rápida
-  document.addEventListener('DOMContentLoaded', () => {
+  // Manejar el splash de forma no bloqueante
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideSplash);
+  } else {
+    hideSplash();
+  }
+
+  function hideSplash() {
     const splash = document.getElementById('splash-overlay-fullscreen');
     if (splash) {
-      // Ocultar el splash inmediatamente después de un breve retraso
-      setTimeout(() => {
-        splash.classList.add('hidden');
-        // No es necesario remover el elemento del DOM si display:none ya lo oculta
-      }, 100); // Retraso aún más corto para la transición
+      splash.style.visibility = 'hidden';
     }
-  });
+  }
 </script>
 
 <style>
@@ -181,7 +172,7 @@ import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
     font-size: 1.3rem;
     font-weight: 300;
     letter-spacing: 0.1em;
-    font-family: sans-serif; /* Usar fuente genérica ya que Inter fue removida */
+    font-family: system-ui, -apple-system, sans-serif;
     color: rgba(255, 255, 255, 0.9);
   }
   
