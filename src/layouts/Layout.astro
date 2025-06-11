@@ -16,11 +16,10 @@ const {
   image = '/images/taxi-barajas-hero-1024.webp'
 } = Astro.props;
 
-// Preload de recursos críticos
+// Preload de recursos críticos (eliminando preload de fuente)
 const preloadLinks = [
   { rel: 'preload', href: '/images/logo-madridtaxis.png', as: 'image' },
-  { rel: 'preload', href: image, as: 'image' },
-  { rel: 'preload', href: '/fonts/inter-var.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }
+  { rel: 'preload', href: image, as: 'image' }
 ];
 
 // CSS crítico inline
@@ -83,12 +82,12 @@ const criticalCSS = `
     <style is:inline>{criticalCSS}</style>
     
     <!-- Fuentes -->
-    <link 
+    <!-- <link 
       rel="stylesheet" 
       href="/fonts/inter-var.css"
       media="print" 
       onload="this.media='all'"
-    />
+    /> -->
     
     <!-- View Transitions -->
     <ViewTransitions />

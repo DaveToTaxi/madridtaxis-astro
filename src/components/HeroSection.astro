@@ -17,20 +17,20 @@
     align-items: center;
     justify-content: center;
     z-index: 99999;
-    animation: splashFadeOut 0.3s ease forwards;
-    animation-delay: 0.5s;
+    opacity: 1;
+    transition: opacity 0.3s ease; /* Transición suave de opacidad */
     pointer-events: none;
     will-change: opacity;
   }
-  @keyframes splashFadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+  .splash-overlay-fullscreen.hidden {
+    opacity: 0;
+    display: none; /* Asegura que el elemento no ocupe espacio y no bloquee el renderizado */
   }
 </style>
 
 <section class="hero">
   <!-- SPLASH PANTALLA COMPLETA - cubre header y todo -->
-  <div class="splash-overlay-fullscreen" aria-hidden="true">
+  <div id="splash-overlay-fullscreen" class="splash-overlay-fullscreen" aria-hidden="true">
     <div class="splash-content">
       <div class="splash-logo">
         <img 
@@ -145,6 +145,20 @@
   </div>
 </section>
 
+<script is:inline>
+  // Manejar el splash de forma no bloqueante y rápida
+  document.addEventListener('DOMContentLoaded', () => {
+    const splash = document.getElementById('splash-overlay-fullscreen');
+    if (splash) {
+      // Ocultar el splash inmediatamente después de un breve retraso
+      setTimeout(() => {
+        splash.classList.add('hidden');
+        // No es necesario remover el elemento del DOM si display:none ya lo oculta
+      }, 100); // Retraso aún más corto para la transición
+    }
+  });
+</script>
+
 <style>
   .hero {
     position: relative;
@@ -226,7 +240,7 @@
   
   .booking-form {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */ /* Eliminado por rendimiento */
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
