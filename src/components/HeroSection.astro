@@ -1,7 +1,7 @@
 ---
 // src/components/HeroSection.astro
 // Hero con splash de PANTALLA COMPLETA optimizado para LCP y móvil
-import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 import taxiBarajasHero480 from '../assets/images/taxi-barajas-hero-480.webp';
 import taxiBarajasHero1024 from '../assets/images/taxi-barajas-hero-1024.webp';
 import taxiBarajasHero1920 from '../assets/images/taxi-barajas-hero-1920.webp';
@@ -71,7 +71,6 @@ import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
     height: 100%;
     z-index: -2;
     contain: layout paint;
-    content-visibility: auto;
   }
 
   .hero-background-img {
@@ -81,7 +80,32 @@ import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
     object-position: center;
     transform: translateZ(0);
     backface-visibility: hidden;
-    will-change: transform;
+  }
+
+  .hero-background-img.lcp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .hero-background-img.responsive {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+
+  .hero-background-img.responsive.loaded {
+    opacity: 1;
   }
 </style>
 
@@ -90,16 +114,16 @@ import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
   <div id="splash-overlay-fullscreen" class="splash-overlay-fullscreen" aria-hidden="true">
     <div class="splash-content">
       <div class="splash-logo">
-        <img 
-          src="/images/logo-madridtaxis.png" 
-          alt="Logo MadridTaxis - Taxi Las Rozas Aeropuerto" 
-          class="splash-logo-img"
-          width="120"
-          height="120"
+        <Image 
+          src={logoMadridTaxis}
+          alt="Logo MadridTaxis - Taxi Las Rozas Aeropuerto"
+          width={120}
+          height={120}
           loading="eager"
           fetchpriority="high"
           decoding="sync"
-        >
+          class="splash-logo-img"
+        />
         <div class="splash-subtitle">Desde Las Rozas al Aeropuerto, 24h</div>
       </div>
     </div>
@@ -107,17 +131,18 @@ import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
   
   <!-- Contenido principal (SIEMPRE visible para SEO) -->
   <div class="hero-background">
-    <Picture
+    <Image
       src={taxiBarajasHero480}
       alt="Taxi Madrid Aeropuerto"
-      widths={[480, 1024, 1920]}
-      sizes="(max-width: 768px) 100vw, 100vw"
+      width={480}
+      height={320}
+      quality={80}
+      format="webp"
       loading="eager"
       fetchpriority="high"
       decoding="sync"
       class="hero-background-img"
-      quality={80}
-      format="webp"
+      sizes="(max-width: 768px) 100vw, 100vw"
     />
     <div class="hero-overlay"></div>
   </div>
@@ -190,18 +215,14 @@ import logoMadridTaxis from '../assets/images/logo-madridtaxis.png';
 
 <script is:inline>
   // Optimización de carga de imagen
-  if ('loading' in HTMLImageElement.prototype) {
-    const images = document.querySelectorAll('img[loading="eager"]');
-    images.forEach(img => {
-      if (img.complete) {
-        img.classList.add('loaded');
-      } else {
-        img.addEventListener('load', () => {
-          img.classList.add('loaded');
-        });
-      }
-    });
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const responsiveImg = document.querySelector('.hero-background-img.responsive');
+    if (responsiveImg) {
+      responsiveImg.addEventListener('load', () => {
+        responsiveImg.classList.add('loaded');
+      });
+    }
+  });
 
   // Manejar el splash de forma no bloqueante
   if (document.readyState === 'loading') {
